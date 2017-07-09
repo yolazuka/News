@@ -141,9 +141,9 @@ public class QueryUtils {
         return output.toString();
     }
 
-    private static List<News> extractFeatureFromJson(String newsJSON) {
+    private static List<News> extractFeatureFromJson(String responseJSON) {
         // If the JSON string is empty or null, then return early.
-        if (TextUtils.isEmpty(newsJSON)) {
+        if (TextUtils.isEmpty(responseJSON)) {
             return null;
 
         }
@@ -155,9 +155,11 @@ public class QueryUtils {
 
         try {
 
-            //We create the object of the news and the Array that contain these objects
-            //We extract all the information from the JSON KEY "results"
-            JSONObject objectNews = new JSONObject(newsJSON);
+            //We create the primary JSON Object,
+            // then we create the JSON Object from the key "response"
+            //We extract all the information in arrays from  the JSON KEY "results"
+            JSONObject response = new JSONObject(responseJSON);
+            JSONObject objectNews = response.getJSONObject("response");
             JSONArray itemsArray = objectNews.getJSONArray("results");
             Log.v(LOG_TAG, "Object and Array JSON created correctly");
 

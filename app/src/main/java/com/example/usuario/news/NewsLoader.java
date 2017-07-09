@@ -2,6 +2,7 @@ package com.example.usuario.news;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.util.Log;
 
 import java.util.List;
 
@@ -54,6 +55,7 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
         // Perform the network request, parse the response, and extract a list of news
         List<News> news_s = QueryUtils.fetchNewsData(mUrl);
+        Log.v(LOG_TAG, "The data is feching");
         return news_s;
     }
 }
