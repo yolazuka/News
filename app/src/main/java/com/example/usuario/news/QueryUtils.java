@@ -159,6 +159,8 @@ public class QueryUtils {
             //We extract all the information from the JSON KEY "results"
             JSONObject objectNews = new JSONObject(newsJSON);
             JSONArray itemsArray = objectNews.getJSONArray("results");
+            Log.v(LOG_TAG, "Object and Array JSON created correctly");
+
 
             //Loop through all the news, get the title of the news, and news section
             for (int i = 0; i < itemsArray.length(); i++) {
