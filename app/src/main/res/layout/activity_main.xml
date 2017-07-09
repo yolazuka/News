@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context="com.example.usuario.news.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal">
+
+        <!-- Header image of the layout -->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:paddingTop="10dp"
+            android:paddingBottom="15dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/theguardian" />
+
+    </LinearLayout>
+
+    <!-- Layout for a list of news -->
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/blue"
+        android:dividerHeight="1dp"
+        android:orientation="vertical" />
+
+    <!-- Empty view is only visible when the list has no books to show up -->
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/light_blue"
+        android:textSize="20sp" />
+
+    <!-- Progress bar only seen if the request takes a while to process the query -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/light_blue"
+        android:layout_marginTop="50dp"
+        android:visibility="invisible" />
+
+</LinearLayout>
