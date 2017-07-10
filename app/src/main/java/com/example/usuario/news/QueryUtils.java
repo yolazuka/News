@@ -156,28 +156,31 @@ public class QueryUtils {
         try {
 
             //We create the primary JSON Object,
-            // then we create the JSON Object from the key "response"
-            //We extract all the information in arrays from  the JSON KEY "results"
-            JSONObject response = new JSONObject(responseJSON);
-            JSONObject objectNews = response.getJSONObject("response");
-            JSONArray itemsArray = objectNews.getJSONArray("results");
-            Log.v(LOG_TAG, "Object and Array JSON created correctly");
+            JSONObject primaryJsonObject = new JSONObject(responseJSON);
 
+            // then we create the JSON Object from the JSON key "response"
+            JSONObject newsResult = primaryJsonObject.getJSONObject("response");
+
+            //declaring now the strings and arrays for the conditional block of code
+            JSONArray itemsArray = newsResult.getJSONArray("results");
+
+            String section = "";
+
+            String website = "";
+
+            String title = "";
 
             //Loop through all the news, get the title of the news, and news section
             for (int i = 0; i < itemsArray.length(); i++) {
 
-                JSONObject item = itemsArray.getJSONObject(i);
-                JSONObject newsAttributes = item.getJSONObject("results");
-                String title = newsAttributes.getString("webTitle");
-                String section = "";
-                String website = "";
+                JSONObject currentNew = itemsArray.getJSONObject(i);
+                title = currentNew.getString("webTitle");
 
                 //If there is title info make this:
 
-                if (newsAttributes.has("webTitle")) {
+                if (newsResult.has("webTitle")) {
 
-                    JSONArray newsTitle = newsAttributes.getJSONArray("webTitle");
+                    JSONArray newsTitle = newsResult.getJSONArray("webTitle");
                     Log.v(LOG_TAG, "The key webTitle got title info");
 
                     for (int x = 0; x < newsTitle.length(); x++) {
@@ -191,8 +194,8 @@ public class QueryUtils {
 
                 //if there is News section info, get the string from sectionName JSON
 
-                if (newsAttributes.has("sectionName")) {
-                    section = newsAttributes.getString("sectionName");
+                if (newsResult.has("sectionName")) {
+                    section = newsResult.getString("sectionName");
                     Log.v(LOG_TAG, "The key sectionName got title info");
 
                     //if there is not, show this message
@@ -201,8 +204,8 @@ public class QueryUtils {
                     title = "Unknown title";
                 }
 
-                if (newsAttributes.has("webUrl")) {
-                    website = newsAttributes.getString("webUrl");
+                if (newsResult.has("webUrl")) {
+                    website = newsResult.getString("webUrl");
                     Log.v(LOG_TAG, "The news got url");
                 }
 
@@ -214,7 +217,6 @@ public class QueryUtils {
                 }
 
             //if there is url, get the string from sectionName JSON
-
 
         } catch (JSONException e) {
 
