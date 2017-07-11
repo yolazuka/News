@@ -14,14 +14,14 @@ public class News {
 
     private String mNewsTitle;
 
-    private String mUrlIntent;
+    private String mWebsite;
 
     // Assign the strings to the class
 
-    public News(String sectionName, String newsTitle, String urlIntent) {
+    public News(String sectionName, String newsTitle, String website) {
         mSectionName = sectionName;
         mNewsTitle = newsTitle;
-        mUrlIntent = urlIntent;
+        mWebsite = website;
     }
 
     //Through the method getter we will obtein the values of the String
@@ -34,8 +34,8 @@ public class News {
         return mNewsTitle;
     }
 
-    public String getUrlIntent() {
-        return mUrlIntent;
+    public String getWebsite() {
+        return mWebsite;
     }
 
 }

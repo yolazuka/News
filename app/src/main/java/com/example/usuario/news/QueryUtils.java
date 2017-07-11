@@ -161,9 +161,10 @@ public class QueryUtils {
             // then we create the JSON Object from the JSON key "response"
             JSONObject newsResult = primaryJsonObject.getJSONObject("response");
 
-            //declaring now the strings and arrays for the conditional block of code
+            //We create now the array for the keys contained into the results
             JSONArray itemsArray = newsResult.getJSONArray("results");
 
+            //Declare the rest of the strings
             String section = "";
 
             String website = "";
@@ -173,19 +174,18 @@ public class QueryUtils {
             //Loop through all the news, get the title of the news, and news section
             for (int i = 0; i < itemsArray.length(); i++) {
 
-                JSONObject currentNew = itemsArray.getJSONObject(i);
-                title = currentNew.getString("webTitle");
+                JSONObject currentItem = itemsArray.getJSONObject(i);
+
+                website = currentItem.getString("webUrl");
 
                 //If there is title info make this:
 
                 if (newsResult.has("webTitle")) {
 
-                    JSONArray newsTitle = newsResult.getJSONArray("webTitle");
+                    title = currentItem.getString("webTitle");
+
                     Log.v(LOG_TAG, "The key webTitle got title info");
 
-                    for (int x = 0; x < newsTitle.length(); x++) {
-                        title = title.concat(newsTitle.getString(x) + "\n");
-                    }
                     //if there is not, show this message
                 } else {
                     title = "Header N/A";
@@ -195,7 +195,7 @@ public class QueryUtils {
                 //if there is News section info, get the string from sectionName JSON
 
                 if (newsResult.has("sectionName")) {
-                    section = newsResult.getString("sectionName");
+                    section = currentItem.getString("sectionName");
                     Log.v(LOG_TAG, "The key sectionName got title info");
 
                     //if there is not, show this message
@@ -204,9 +204,9 @@ public class QueryUtils {
                     title = "Unknown title";
                 }
 
-                if (newsResult.has("webUrl")) {
-                    website = newsResult.getString("webUrl");
-                    Log.v(LOG_TAG, "The news got url");
+                if (newsResult.has("type")) {
+                    website = currentItem.getString("type");
+                    Log.v(LOG_TAG, "The news got type of info");
                 }
 
                 //Create a new Book Object with the data of a given book
