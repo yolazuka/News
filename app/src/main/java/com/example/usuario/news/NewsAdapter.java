@@ -52,6 +52,10 @@ import java.util.ArrayList;
             TextView sectionTextView = (TextView) newsListView.findViewById(R.id.section_text_view);
             sectionTextView.setText(currentNews.getSectionName());
 
+            //Get the TextView with the section_view ID and set the type of article of the news as text
+            TextView typeTextView = (TextView) newsListView.findViewById(R.id.typeOf_text_view);
+            typeTextView.setText(currentNews.getSectionName());
+
             return newsListView;
 
         }

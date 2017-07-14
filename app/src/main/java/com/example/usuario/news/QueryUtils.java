@@ -165,16 +165,22 @@ public class QueryUtils {
             JSONArray itemsArray = newsResult.getJSONArray("results");
 
             //Declare the rest of the strings
+
+            String title = "";
+
             String section = "";
 
             String website = "";
 
-            String title = "";
+            String typeOfNews = "";
 
             //Loop through all the news, get the title of the news, and news section
             for (int i = 0; i < itemsArray.length(); i++) {
 
                 JSONObject currentItem = itemsArray.getJSONObject(i);
+
+                //I declare "website" out of the conditionals because I dont want to show it
+                //on screen, I just want to get a string value for the intent to go.
 
                 website = currentItem.getString("webUrl");
 
@@ -201,16 +207,18 @@ public class QueryUtils {
                     //if there is not, show this message
 
                 } else {
-                    title = "Unknown title";
+                    section = "Unknown title";
                 }
 
                 if (newsResult.has("type")) {
-                    website = currentItem.getString("type");
+                    typeOfNews = currentItem.getString("type");
                     Log.v(LOG_TAG, "The news got type of info");
+                } else {
+                    typeOfNews = "No type of news found";
                 }
 
                 //Create a new Book Object with the data of a given book
-                News currentNews = new News(title, section, website);
+                News currentNews = new News(title, section, website, typeOfNews);
 
                 //Add the book to the List of Book Objects
                 news_s.add(currentNews);
