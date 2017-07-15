@@ -34,7 +34,7 @@ public class QueryUtils {
      * This class is only meant to hold static variables and methods
      * <p>
      * /**
-     * Query the USGS dataset and return an {@link News} object to represent a single earthquake.
+     * Query the THEGUARDIAN dataset and return an {@link News} object to represent a single News ( singular)
      */
     public static List<News> fetchNewsData(String requestUrl) {
         // Create URL object

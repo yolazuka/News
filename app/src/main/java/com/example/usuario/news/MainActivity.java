@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity
         /// Set empty state text to display "No news found."
         mEmptyStateTextView.setText(R.string.no_news_found);
 
-        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
+        // If there is a valid list of {@link News}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (news_s != null && !news_s.isEmpty()) {
             mAdapter.addAll(news_s);

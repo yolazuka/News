@@ -23,7 +23,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
      * Create a new {@link NewsAdapter} object.
      *
      * @param context is the current context (i.e. Activity) that the adapter is being created in.
-     * @param news_s  is the list of earthquakes to be displayed
+     * @param news_s  is the list of news to be displayed
      */
     public NewsAdapter(Context context, ArrayList<News> news_s) {
         super(context, 0, news_s);
