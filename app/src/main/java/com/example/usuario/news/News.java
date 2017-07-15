@@ -16,15 +16,12 @@ public class News {
 
     private String mWebsite;
 
-    private String mTypeOfNews;
-
     // Assign the strings to the class
 
-    public News(String newsTitle, String sectionName, String website, String typeOfNews) {
+    public News(String newsTitle, String sectionName, String website) {
         mSectionName = sectionName;
         mNewsTitle = newsTitle;
         mWebsite = website;
-        mTypeOfNews = typeOfNews;
 
     }
 
@@ -41,11 +38,6 @@ public class News {
     public String getWebsite() {
         return mWebsite;
     }
-
-    public String getTypeOfNews() {
-        return mTypeOfNews;
-    }
-
 
 
 }

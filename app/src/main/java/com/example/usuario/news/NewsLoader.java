@@ -28,9 +28,9 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
      *
      * @param context of the activity
      * @param url     to load data from
-     * Through the following steps:
-     * 1- OnStartLoading
-     * 2- loadinBackground
+     *                Through the following steps:
+     *                1- OnStartLoading
+     *                2- loadinBackground
      */
 
     public NewsLoader(Context context, String url) {

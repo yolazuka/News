@@ -172,8 +172,6 @@ public class QueryUtils {
 
             String website = "";
 
-            String typeOfNews = "";
-
             //Loop through all the news, get the title of the news, and news section
             for (int i = 0; i < itemsArray.length(); i++) {
 
@@ -186,7 +184,7 @@ public class QueryUtils {
 
                 //If there is title info make this:
 
-                if (newsResult.has("webTitle")) {
+                if (currentItem.has("webTitle")) {
 
                     title = currentItem.getString("webTitle");
 
@@ -200,7 +198,7 @@ public class QueryUtils {
 
                 //if there is News section info, get the string from sectionName JSON
 
-                if (newsResult.has("sectionName")) {
+                if (currentItem.has("sectionName")) {
                     section = currentItem.getString("sectionName");
                     Log.v(LOG_TAG, "The key sectionName got title info");
 
@@ -210,19 +208,12 @@ public class QueryUtils {
                     section = "Unknown title";
                 }
 
-                if (newsResult.has("type")) {
-                    typeOfNews = currentItem.getString("type");
-                    Log.v(LOG_TAG, "The news got type of info");
-                } else {
-                    typeOfNews = "No type of news found";
-                }
-
                 //Create a new Book Object with the data of a given book
-                News currentNews = new News(title, section, website, typeOfNews);
+                News currentNews = new News(title, section, website);
 
                 //Add the book to the List of Book Objects
                 news_s.add(currentNews);
-                }
+            }
 
             //if there is url, get the string from sectionName JSON
 
